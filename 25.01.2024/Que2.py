@@ -1,11 +1,38 @@
-import math 
+#!/bin/python3
 
-def gameWithCells(n, m): 
-    packages_in_rows = math.ceil(n / 2) 
-    packages_in_columns = math.ceil(m / 2) 
-    total_packages = packages_in_rows * packages_in_columns 
+import math
+import os
+import random
+import re
+import sys
 
-    return total_packages 
-n, m = map(int, input().split()) 
-result = gameWithCells(n, m) 
-print(result)
+#
+# Complete the 'connectingTowns' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER_ARRAY routes
+#
+
+def connectingTowns(n, routes):
+    s=1
+    for i in routes:
+        s*=i
+    return s%1234567
+
+if _name_ == '_main_':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+        n = int(input().strip())
+
+        routes = list(map(int, input().rstrip().split()))
+
+        result = connectingTowns(n, routes)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
